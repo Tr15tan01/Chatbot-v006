@@ -39,33 +39,20 @@ form.addEventListener(
 );
 
 socket.on('chat_message', function(data) {
-	addMessage(
-		'<span class="userName2">' +
-			data.username +
-			'</span>' +
-			': ' +
-			data.message +
-			' - ' +
-			'<span class="timeSent"> ' +
-			now +
-			'</span>'
-	);
-});
-
-socket.on('user_join', function(data) {
-	addMessage(
-		'<span class="userName4">' +
-			data +
-			'</span>' +
-			"<span class='joiner'> just joined the chat!</span>" +
-			'<span class="timeSent"> ' +
-			now +
-			'</span>'
-	);
-});
-
-socket.on('user_leave', function(data) {
-	addMessage(data + ' has left the chat.');
+	const fun = () => {
+		addMessage(
+			'<span class="userName2">' +
+				'chatbot' +
+				'</span>' +
+				': ' +
+				data.message +
+				' - ' +
+				'<span class="timeSent"> ' +
+				now +
+				'</span>'
+		);
+	};
+	setTimeout(fun, 600);
 });
 
 addMessage(
@@ -83,5 +70,6 @@ function addMessage(message) {
 	const li = document.createElement('li');
 	li.innerHTML = message;
 	messages.appendChild(li);
+	li.setAttribute("data-aos", "fade-up")
 	window.scrollTo(0, document.body.scrollHeight);
 }
