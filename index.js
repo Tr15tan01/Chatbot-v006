@@ -26,10 +26,17 @@ io.on('connection', function(socket) {
 		data.username = this.username;
 		
 			function checkanswer(ans) {
-				return ans == data.message;
+				console.log(ans)
+				// return ans == data.message;
+				return data.message.includes(ans)
 			}
 			const arr = Object.keys(datObject);
+
 			answer = arr.find(checkanswer);
+			//console.log('arr', arr, 'answer', answer, 'data.message', data.message)
+			if(data.message.includes(answer)) {
+				console.log('yes')
+			}
 			data.message = datObject[answer] || 'მაგაზე არ ვიცი რა გიპასუხო';
 			// console.log(datObject[answer]);
 		
