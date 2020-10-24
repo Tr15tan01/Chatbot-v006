@@ -70,6 +70,6 @@ function addMessage(message) {
 	const li = document.createElement('li');
 	li.innerHTML = message;
 	messages.appendChild(li);
-	li.setAttribute("data-aos", "fade-up")
+	// li.setAttribute("data-aos", "fade-left")
 	window.scrollTo(0, document.body.scrollHeight);
 }

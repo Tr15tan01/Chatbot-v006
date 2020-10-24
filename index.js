@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
 			}
 			const arr = Object.keys(datObject);
 			answer = arr.find(checkanswer);
-			data.message = datObject[answer];
+			data.message = datObject[answer] || 'მაგაზე არ ვიცი რა გიპასუხო';
 			// console.log(datObject[answer]);
 		
 		socket.emit('chat_message', data);
