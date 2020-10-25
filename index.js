@@ -13,20 +13,12 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
 });
 
-// const datObject = {
-// 	hi  : 'hello',
-// 	bye : 'bye bye',
-// 	'გამარჯობა': 'გაგიმარჯოს',
-// 	'ნახვამდის': 'კარგად'
-// };
-
 io.on('connection', function(socket) {
 
 	socket.on('chat_message', function(data) {
 		data.username = this.username;
 		
 			function checkanswer(ans) {
-				console.log(ans)
 				// return ans == data.message;
 				return data.message.includes(ans)
 			}
