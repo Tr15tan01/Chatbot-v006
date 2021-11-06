@@ -9,34 +9,36 @@ const datObject = require('./data.js')
 
 app.use(express.static(publicDirectory));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
 
-	socket.on('chat_message', function(data) {
+	socket.on('chat_message', function (data) {
 		data.username = this.username;
-		
-			function checkanswer(ans) {
-				// return ans == data.message;
-				return data.message.includes(ans)
-			}
-			const arr = Object.keys(datObject);
 
-			answer = arr.find(checkanswer);
-			//console.log('arr', arr, 'answer', answer, 'data.message', data.message)
-			if(data.message.includes(answer)) {
-				console.log('yes')
-			}
-			data.message = datObject[answer] || 'მაგაზე არ ვიცი რა გიპასუხო';
-			// console.log(datObject[answer]);
-		
+		function checkanswer(ans) {
+			// return ans == data.message;
+			return data.message.includes(ans)
+		}
+		const arr = Object.keys(datObject);
+
+		console.log(arr)
+
+		answer = arr.find(checkanswer);
+		//console.log('arr', arr, 'answer', answer, 'data.message', data.message)
+		if (data.message.includes(answer)) {
+			console.log('yes', answer)
+		}
+		data.message = datObject[answer] || 'Can not really answer :-) ';
+		// console.log(datObject[answer]);
+
 		socket.emit('chat_message', data);
 	});
 
 });
 
-http.listen(port, function() {
+http.listen(port, function () {
 	console.log('Listening on *:' + port);
 });
