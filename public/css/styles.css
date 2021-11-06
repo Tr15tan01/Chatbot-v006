@@ -62,7 +62,8 @@ form button:hover {
 	border-radius: 4px;
 }
 
-.userName1 {
+.userName1,
+.linkStyle {
 	background-color: dodgerblue;
 	color: white;
 	padding: 6px 24px;

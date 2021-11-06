@@ -24,8 +24,6 @@ io.on('connection', function (socket) {
 		}
 		const arr = Object.keys(datObject);
 
-		console.log(arr)
-
 		answer = arr.find(checkanswer);
 		//console.log('arr', arr, 'answer', answer, 'data.message', data.message)
 		if (data.message.includes(answer)) {
